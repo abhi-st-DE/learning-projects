@@ -15,4 +15,7 @@
    1. Using Beautiful Soup is legal because you only use it for parsing documents. Web scraping in general is also legal if you respect a website’s terms of service and copyright laws.
    2. We will build a web scraper that fetches Python software developer job listings from a fake Python job site.
 
+## Spreadsheet picture of a sample of the output 
+when saved as csv using pandas.
 
+![WebScrapCsv](/home/abhi/Pictures/webscrap_job_csv.png)
