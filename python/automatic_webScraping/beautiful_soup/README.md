@@ -18,4 +18,4 @@
 ## Spreadsheet picture of a sample of the output 
 when saved as csv using pandas.
 
-![WebScrapCsv](python/automatic_webScraping/beautiful_soup/csv_imagewebscrap_job_csv.png)
+![WebScrapCsv](csv_imagewebscrap_job_csv.png)
