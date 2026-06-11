@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOABLE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass">
+            <div class="logo">
+                DOABLE
+            </div>
+            <div class="file-explorer">
+                <h3>Files</h3>
+                <ul id="file-list"></ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="chat-container glass">
+                <div id="chat-messages" class="messages">
+                    <!-- Messages will be injected here -->
+                    <div class="message system">
+                        What do you want to build today?
+                    </div>
+                </div>
+                
+                <div class="input-area">
+                    <input type="text" id="prompt-input" placeholder="A simple python calculator...">
+                    <button id="send-btn">Generate</button>
+                </div>
+            </div>
+
+            <!-- Code Viewer -->
+            <div class="code-viewer glass">
+                <div class="code-header">
+                    <span id="current-file-name">Select a file</span>
+                </div>
+                <pre><code id="code-content" class="language-python"></code></pre>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="/static/app.js"></script>
+</body>
+</html>
