@@ -1,0 +1,171 @@
+/* Root variables for colors, typography, and spacing */
+:root {
+  /* Colors */
+  --color-bg: #f5f5f5;
+  --color-primary: #4a90e2;
+  --color-primary-dark: #357ab8;
+  --color-operator: #ff9500;
+  --color-operator-dark: #e08a00;
+  --color-button: #e0e0e0;
+  --color-button-dark: #c7c7c7;
+  --color-display-bg: #ffffff;
+  --color-display-text: #212121;
+  --color-disabled-bg: #eaeaea;
+  --color-disabled-text: #9e9e9e;
+  --color-shadow: rgba(0, 0, 0, 0.15);
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-size-base: 1rem;               /* 16px */
+  --font-size-display: 2.5rem;          /* 40px */
+  --font-size-button: 1.125rem;         /* 18px */
+
+  /* Spacing */
+  --spacing-gap: 0.5rem;                /* 8px */
+  --spacing-padding: 1rem;              /* 16px */
+  --border-radius: 0.75rem;             /* 12px */
+}
+
+/* Calculator container */
+.calculator {
+  max-width: 420px;
+  margin: 2rem auto;
+  padding: var(--spacing-padding);
+  background: var(--color-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px var(--color-shadow);
+  font-family: var(--font-family);
+}
+
+/* Display */
+.calculator-display {
+  width: 100%;
+  font-size: var(--font-size-display);
+  text-align: right;
+  padding: var(--spacing-padding);
+  border: none;
+  background: var(--color-display-bg);
+  color: var(--color-display-text);
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+}
+
+/* Disabled appearance for the display (when using readonly) */
+.calculator-display[disabled],
+.calculator-display:disabled {
+  background: var(--color-disabled-bg);
+  color: var(--color-disabled-text);
+}
+
+/* Buttons grid */
+.calculator-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(60px, auto);
+  gap: var(--spacing-gap);
+  margin-top: var(--spacing-gap);
+}
+
+/* Individual button */
+.calc-button {
+  font-size: var(--font-size-button);
+  background: var(--color-button);
+  color: #212121;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hover / focus states */
+.calc-button:hover,
+.calc-button:focus {
+  background: var(--color-button-dark);
+  outline: none;
+}
+
+/* Active (pressed) state */
+.calc-button:active {
+  transform: translateY(1px);
+}
+
+/* Operator buttons – distinct colour */
+.calc-button[data-value="+"],
+.calc-button[data-value="-"],
+.calc-button[data-value="*"],
+.calc-button[data-value="/"],
+.calc-button[data-value="%"] {
+  background: var(--color-operator);
+  color: #fff;
+}
+
+/* Hover/focus for operator buttons */
+.calc-button[data-value="+"]:hover,
+.calc-button[data-value="-"]:hover,
+.calc-button[data-value="*"]:hover,
+.calc-button[data-value="/"]:hover,
+.calc-button[data-value="%"]:hover,
+.calc-button[data-value="+"]:focus,
+.calc-button[data-value="-"]:focus,
+.calc-button[data-value="*"]:focus,
+.calc-button[data-value="/"]:focus,
+.calc-button[data-value="%"]:focus {
+  background: var(--color-operator-dark);
+}
+
+/* Equals button – emphasize */
+.calc-button[data-value="="] {
+  background: var(--color-primary);
+  color: #fff;
+  grid-column: span 2; /* make it twice as wide */
+}
+
+/* Hover/focus for equals */
+.calc-button[data-value="="]:hover,
+.calc-button[data-value="="]:focus {
+  background: var(--color-primary-dark);
+}
+
+/* Clear / Reset button – optional distinct styling */
+.calc-button[data-action="clear"],
+.calc-button[data-action="reset"] {
+  background: #d32f2f;
+  color: #fff;
+}
+
+/* Hover/focus for clear/reset */
+.calc-button[data-action="clear"]:hover,
+.calc-button[data-action="reset"]:hover,
+.calc-button[data-action="clear"]:focus,
+.calc-button[data-action="reset"]:focus {
+  background: #b71c1c;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .calculator {
+    margin: 1rem;
+    padding: 0.75rem;
+  }
+
+  .calculator-display {
+    font-size: 2rem; /* slightly smaller on mobile */
+    padding: 0.75rem;
+  }
+
+  .calculator-buttons {
+    gap: 0.4rem;
+  }
+
+  .calc-button {
+    font-size: 1rem;
+    min-height: 48px;
+  }
+
+  .calc-button[data-value="="] {
+    grid-column: span 2;
+  }
+}

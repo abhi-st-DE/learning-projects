@@ -1,7 +1,5 @@
-import os
 import re
 from dotenv import load_dotenv
-from langchain_core.globals import set_verbose, set_debug
 from langchain_groq.chat_models import ChatGroq
 from langgraph.constants import END
 from langgraph.graph import StateGraph
@@ -14,11 +12,7 @@ from agent.tools import write_file, read_file, get_current_directory, list_files
 
 _ = load_dotenv()
 
-# Debugging is handled nicely by LangSmith, keeping CLI output clean.
-# set_debug(False)
-# set_verbose(False)
-
-llm = ChatGroq(model="llama-3.3-70b-versatile", max_retries=5)
+llm = ChatGroq(model="openai/gpt-oss-120b", max_retries=5)
 
 
 def planner_agent(state: dict) -> dict:
@@ -120,7 +114,7 @@ def reviewer_agent(state: dict, config: RunnableConfig) -> dict:
         return {"reviewer_feedback": "", "retry_count": 0}
 
     prompt = reviewer_prompt(current_task.task_description, current_task.filepath, file_content)
-    reviewer_llm = ChatGroq(model="llama-3.1-8b-instant", max_retries=5)
+    reviewer_llm = ChatGroq(model="openai/gpt-oss-20b", max_retries=5)
     
     response = reviewer_llm.invoke(prompt)
     content = response.content
